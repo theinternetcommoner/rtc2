@@ -1,5 +1,4 @@
 from flask import *
-from waitress import serve
 
 def rtc_app():
 	app = Flask(__name__)
