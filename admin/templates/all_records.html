@@ -1,0 +1,42 @@
+{% extends "admintemplate.html" %}
+
+{% block title %}All Records{% endblock %}
+
+{% block content %}
+
+<div class="table table-responsive">
+	<table class="table table-hover table table-bordered">
+		<thead>
+			<tr>
+				<th style="width: auto">No.</th>
+				<th style="width: auto">Case No.</th>
+				<th style="width: auto">Title</th>
+				<th style="width: auto">Nature</th>
+				<th style="width: auto">Age</th>
+				<th style="width: auto">Case Option</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in row %}
+			<input type="hidden" name="case_id" value="{{ item['case_id'] }}">
+			<tr>
+				<td></td>
+				<td>{{ item['case_no'] }}</td>
+				<td>{{ item['case_title'] }}</td>
+				<td>{{ item['case_nature'] }}</td>
+				<td>{{ item['age'] }} year/s</td>
+				<td>
+					<!-- removed view profile button -->
+					<a class="btn btn-outline-info" href="{{ url_for('admin.selectdate', id = item['case_id']) }}" role="button">Edit Date</a>
+					<a class="btn btn-outline-info" href="{{ url_for('admin.selectinfo', id = item['case_id']) }}" role="button">Edit Info</a>
+					<a class="btn btn-outline-info" href="{{ url_for('admin.selectstatus', id = item['case_id']) }}" role="button">Edit Status</a>
+					<a class="btn btn-outline-info" href="{{ url_for('admin.selectcategory', id = item['case_id']) }}" role="button">Edit Category</a>
+					<a class="btn btn-outline-info" href="{{ url_for('admin.selectsubcategory', id = item['case_id']) }}" role="button">Edit Subcategory</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}

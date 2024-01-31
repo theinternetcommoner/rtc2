@@ -1,0 +1,4 @@
+venv
+rtc-fc/_pycache_
+*.pyc
+*.db

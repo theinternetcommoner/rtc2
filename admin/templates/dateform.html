@@ -1,0 +1,43 @@
+{% extends "admintemplate.html" %}
+
+{% block title %}Edit Dates{% endblock %}
+
+{% block content %}
+
+	<div class="container" style="width: 40%;">
+		<form class="form-horizontal" action="{{ url_for('admin.editdate') }}" method="post">
+			<h2 class="form-signin-heading">Change Dates</h2>
+			{% for item in rows %}
+			<input type="hidden" name="id" value="{{item[0]}}">
+			<label>Filing Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_filed" class="form-control" value="{{item[4]}}"/>
+			<label>Receiving Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_rcv" class="form-control" value="{{item[5]}}"/>
+			<label>Warrant Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_woa" class="form-control" value="{{item[6]}}"/>
+			<label>Detention Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_detain" class="form-control" value="{{item[7]}}"/>
+			<label>Bail Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_bail" class="form-control" value="{{item[8]}}"/>
+			<label>Archive Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_arch" class="form-control" value="{{item[9]}}"/>
+			<label>Arraignment Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_arr" class="form-control" value="{{item[10]}}"/>
+			<label>Pretrial Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_pt" class="form-control" value="{{item[11]}}"/>
+			<label>Prosecution's Evidence Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_proc" class="form-control" value="{{item[12]}}"/>
+			<label>Defense's Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_def" class="form-control" value="{{item[13]}}"/>
+			<label>Submitted for Decision Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_submit" class="form-control" value="{{item[14]}}"/>
+			<label>Disposal Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_disposed" class="form-control" value="{{item[15]}}"/>
+			<label>Promulgation Date</label>
+			<input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_prom" class="form-control" value="{{item[16]}}"/>
+			<input class="btn btn-warning" type="submit" name="update" value="Commit Changes"/>
+			{% endfor %}
+		</form>
+	</div>
+
+{% endblock %}

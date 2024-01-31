@@ -1,0 +1,65 @@
+{% extends "reportstemplate.html" %}
+
+{% block title %}Civil Case Counting{% endblock %}
+
+{% block content %}
+
+
+<h3 align="center">Active Civil Cases Count Monitoring</h3>
+<hr>
+<div class="container">
+	<form class="form-horizontal">
+		<h4>
+			{% for i in row0 %}
+				<label>Arraignment and Pre Trial:</label>
+				<p id="arr">{{ i['COUNT(*)'] }}</p>
+			{% endfor %}
+
+			{% for i in row1 %}
+				<label>Mediation:</label>
+				<p id="med">{{ i['COUNT(*)'] }}</p>
+			{% endfor %}
+
+			{% for i in row2 %}
+				<label>Newly Raffled:</label>
+				<p id="newly">{{ i['COUNT(*)'] }}</p>
+			{% endfor %}
+
+			{% for i in row3 %}
+				<label>Presentation of Respondent's Evidence:</label>
+				<p id="def">{{ i['COUNT(*)'] }}</p>
+			{% endfor %}
+
+			{% for i in row4 %}
+				<label>Presentation of Petitioner's Evidence:</label>
+				<p id="pro">{{ i['COUNT(*)'] }}</p>
+			{% endfor %}
+
+			{% for i in row5 %}
+				<label>Submitted for Decision:</label>
+				<p id="sub">{{ i['COUNT(*)'] }}</p>
+			{% endfor %}
+
+			{% for i in row6 %}
+				<label>Suspended Proceedings:</label>
+				<p id="sus">{{ i['COUNT(*)'] }}</p>
+			{% endfor %}
+			<label>
+				<script type="text/javascript">
+					arr = parseInt(document.getElementById("arr").innerHTML);
+					med = parseInt(document.getElementById("med").innerHTML);
+					newly = parseInt(document.getElementById("newly").innerHTML);
+					def = parseInt(document.getElementById("def").innerHTML);
+					pro = parseInt(document.getElementById("pro").innerHTML);
+					sub = parseInt(document.getElementById("sub").innerHTML);
+					sus = parseInt(document.getElementById("sus").innerHTML);
+
+					total = arr + med + newly + def + pro + sub + sus;
+					document.write("Total: " + total);
+				</script>
+			</label>
+		</h4>
+	</form>
+</div>
+
+{% endblock %}

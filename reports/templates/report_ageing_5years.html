@@ -1,0 +1,43 @@
+{% extends "reportstemplate.html" %}
+
+{% block title %}Cases 5 to 6 Years{% endblock %}
+
+{% block content %}
+
+<h3 align="center">CASES 5 TO 6 YEARS</h3>
+<br>
+<p align="left">
+	Court and Station: Regional Trial Court Branch 1-FC, Baler, Aurora<br>
+	Presiding Judge: HON. ALEJANDRIA B. JAVIER-GENOTA
+</p>
+<div class="table table-responsive" style="text-transform: uppercase;">
+	<table class="table table-hover table table-bordered">
+		<thead>
+			<tr>
+				<th style="width: auto">No.</th>
+				<th style="width: auto">Case No.</th>
+				<th style="width: auto">Title</th>
+				<th style="width: auto">Nature</th>
+				<th style="width: auto">Filing Date (OCC)</th>
+				<th style="width: auto">Receiving Date (Branch)</th>
+				<th style="width: auto">Case Ageing</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in row %}
+			<input type="hidden" name="case_id" value="{{ item['case_id'] }}">
+			<tr>
+				<td></td>
+				<td>{{ item['case_no'] }}</td>
+				<td>{{ item['case_title'] }}</td>
+				<td>{{ item['case_nature'] }}</td>
+				<td>{{ item['filing_date'] }}</td>
+				<td>{{ item['receiving_date'] }}</td>
+				<td>{{ item['age'] }} YEAR/S</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}

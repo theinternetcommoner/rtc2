@@ -1,0 +1,54 @@
+{% extends "admintemplate.html" %}
+
+{% block title %}Edit Status{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<form class="form-horizontal" action="{{ url_for('admin.editstatus') }}" method="post">
+		{% for item in rows %}
+		<input type="hidden" name="id" value="{{ item[0] }}">
+		<h2 class="form-signin-heading">Case Number: {{ item[1] }}</h2>
+		<h3>Case Title: {{ item[2] }}</h3>
+		<h3>Nature: {{ item[3] }}</h3>
+		<h3>Current Status: {{ item[17] }}</h3>
+		<select name="c_status" class="form-control" placeholder="Disposal Status">
+			<option value ="">--Status--</option>
+			<option value ="1">Archived</option>
+			<option value ="2">Arraignment and Pretrial</option>
+			<option value ="3">Decided</option>
+			<option value ="4">Dismissed</option>
+			<option value ="5">Mediation</option>
+			<option value ="6">Newly Raffled</option>
+			<option value ="7">Presentation of Defense's Evidence</option>
+			<option value ="8">Presentation of Prosecution's Evidence</option>
+			<option value ="9">Probation</option>
+			<option value ="10">Provisionally Dismissed</option>			
+			<option value ="11">Submitted for Decision</option>
+			<option value ="12">Suspended Proceedings</option>
+			<option value ="13">Suspended Judjment</option>
+		</select>
+		{% endfor %}
+		<br>
+		<input class="btn btn-warning" type="submit" name="change_stats" value="Change Status"/>
+	</form>
+	<br>
+	<em>
+		<strong>Legend:</strong><br>
+		<label>1 - Archived</label>
+		<label>2 -Arraignment and Pretrial</label>
+		<label>3 - Decided</label>
+		<label>4 - Dismissed</label>
+		<label>5 - Mediation</label>
+		<label>6 - Newly Raffled</label>
+		<label>7 - Presentation of Defense's Evidence</label>
+		<label>8 - Presentation of Prosecution's Evidence</label>
+		<label>9 - Probation</label>
+		<label>10 - Provisionally Dismissed</label>			
+		<label>11 - Submitted for Decision</label>
+		<label>12 - Suspended Proceedings</label>
+		<label>13 - Suspended Judjment</label>
+	</em>
+</div>
+
+{% endblock %}
