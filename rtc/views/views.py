@@ -13,7 +13,7 @@ def connection(database):
 
 @views.route('/view_records')
 def view_records():
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = conn.cursor()
 	sql = """
@@ -38,7 +38,7 @@ def view_records():
 
 @views.route('/profile/<string:id>')
 def profile(id):
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = """
 		SELECT 
@@ -65,7 +65,7 @@ def profile(id):
 @views.route('/search', methods = ['POST', 'GET'])
 def searchrecord():
 	if request.method == 'POST':
-		connection('./rtc_fc.db')
+		connection('./rtc/rtc_fc.db')
 
 		query = conn.cursor()
 		searchVal = request.form['search']

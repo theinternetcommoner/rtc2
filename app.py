@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, render_template
 from rtc import rtc_app
 from waitress import serve
 

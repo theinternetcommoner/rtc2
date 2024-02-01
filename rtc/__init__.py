@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask
 
 def rtc_app():
 	app = Flask(__name__)
