@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, Blueprint, render_template, session, redirect, url_for, request
 from functools import wraps
 import sqlite3 as db
 
@@ -30,7 +30,7 @@ def loginPage():
 def logincheck():
 	if request.method == 'POST':
 		try:
-			conn = db.connect('./rtc_fc.db')
+			conn = db.connect('./rtc/rtc_fc.db')
 			cur = conn.cursor()
 
 			stmt = """
@@ -64,7 +64,7 @@ def index():
 @admin.route('/all_records')
 @login_required
 def all_records():
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = conn.cursor()
 	sql = """
@@ -97,7 +97,7 @@ def new():
 def insertrecord():
 	if request.method == 'POST':
 		try:
-			with db.connect('./rtc_fc.db') as conn:
+			with db.connect('./rtc/rtc_fc.db') as conn:
 				cur = conn.cursor()
 
 				case_no = request.form['c_number']
@@ -184,7 +184,7 @@ def insertrecord():
 
 # @admin.route('/profile/<string:id>')
 # def profile(id):
-# 	connection('./rtc_fc.db')
+# 	connection('./rtc/rtc_fc.db')
 
 # 	query = """
 # 		SELECT 
@@ -206,7 +206,7 @@ def insertrecord():
 @admin.route('/selectdate/<string:id>')
 @login_required
 def selectdate(id):
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = """
 		SELECT * FROM tbl_case_record WHERE case_id = ?
@@ -222,7 +222,7 @@ def selectdate(id):
 @admin.route('/selectinfo/<string:id>')
 @login_required
 def selectinfo(id):
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = """
 		SELECT * FROM tbl_case_record WHERE case_id = ?
@@ -238,7 +238,7 @@ def selectinfo(id):
 @admin.route('/selectstatus/<string:id>')
 @login_required
 def selectstatus(id):
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = """
 		SELECT * FROM tbl_case_record WHERE case_id = ?
@@ -251,7 +251,7 @@ def selectstatus(id):
 @admin.route('/selectcategory/<string:id>')
 @login_required
 def selectcategory(id):
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = """
 		SELECT * FROM tbl_case_record WHERE case_id = ?
@@ -267,7 +267,7 @@ def selectcategory(id):
 @admin.route('/selectsubcategory/<string:id>')
 @login_required
 def selectsubcategory(id):
-	connection('./rtc_fc.db')
+	connection('./rtc/rtc_fc.db')
 
 	query = """
 		SELECT * FROM tbl_case_record WHERE case_id = ?
@@ -316,7 +316,7 @@ def editdate():
 				promulgation_date,
 				case_id
 			)
-			with db.connect('./rtc_fc.db') as conn:
+			with db.connect('./rtc/rtc_fc.db') as conn:
 				cur = conn.cursor()
 
 				query = """
@@ -364,7 +364,7 @@ def editinfo():
 				logs,
 				case_id
 			)
-			with db.connect('./rtc_fc.db') as conn:
+			with db.connect('./rtc/rtc_fc.db') as conn:
 				cur = conn.cursor()
 
 				query = """
@@ -398,7 +398,7 @@ def editstatus():
 				case_id
 			)
 
-			with db.connect('./rtc_fc.db') as conn:
+			with db.connect('./rtc/rtc_fc.db') as conn:
 				cur = conn.cursor()
 
 				query = """
@@ -427,7 +427,7 @@ def editcategory():
 				case_id
 			)
 
-			with db.connect('./rtc_fc.db') as conn:
+			with db.connect('./rtc/rtc_fc.db') as conn:
 				cur = conn.cursor()
 
 				query = """
@@ -456,7 +456,7 @@ def editsubcategory():
 				case_id
 			)
 
-			with db.connect('./rtc_fc.db') as conn:
+			with db.connect('./rtc/rtc_fc.db') as conn:
 				cur = conn.cursor()
 
 				query = """
@@ -476,7 +476,7 @@ def editsubcategory():
 @login_required
 def searchrecord():
 	if request.method == 'POST':
-		connection('./rtc_fc.db')
+		connection('./rtc/rtc_fc.db')
 
 		query = conn.cursor()
 		searchVal = request.form['search']

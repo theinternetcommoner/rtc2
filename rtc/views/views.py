@@ -1,6 +1,5 @@
-from flask import *
+from flask import Flask, Blueprint, render_template
 import sqlite3 as db
-
 
 views = Blueprint("views", __name__, static_folder = "static", template_folder = "templates")
 
@@ -93,18 +92,3 @@ def searchrecord():
 		return render_template('view_records.html', row = result)
 	else:
 		return render_template('view_records.html', row = result)
-
-'''
---ageing query-
-SELECT filing_date, date('now') as today,
-CASE
-	WHEN strftime('%m', date('now')) > strftime('%m', date(filing_date)) THEN strftime('%Y', date('now')) - strftime('%Y', date(filing_date))
-	WHEN strftime('%m', date('now')) = strftime('%m', date(filing_date)) THEN
-		CASE 
-			WHEN strftime('%d', date('now')) >= strftime('%d', date(filing_date)) THEN strftime('%Y', date('now')) - strftime('%Y', date(filing_date))
-			ELSE strftime('%Y', date('now')) - strftime('%Y', date(filing_date)) - 1
-		END
-	WHEN strftime('%m', date('now')) < strftime('%m', date(filing_date)) THEN strftime('%Y', date('now')) - strftime('%Y', date(filing_date)) - 1
-END as age
-FROM tbl_case_record
-'''
