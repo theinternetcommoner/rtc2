@@ -15,7 +15,7 @@ def index():
 def err_404(error):
     return render_template('404.html')
 
-dev_mode = True
+dev_mode = False
 if __name__ == '__main__':
 	if dev_mode == True:
 		# app.run(host = '0.0.0.0', port = 5001, debug = True)

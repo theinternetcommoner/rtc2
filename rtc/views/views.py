@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template
+from flask import Flask, Blueprint, render_template, request
 import sqlite3 as db
 
 views = Blueprint("views", __name__, static_folder = "static", template_folder = "templates")
