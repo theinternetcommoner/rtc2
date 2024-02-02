@@ -9,7 +9,7 @@ Flask
 Waitress  
 
 *note:  
-refer to requirements.txt for details
+refer to requirements.txt for details, recommended to get the latest version if possible
 
 ## commands used for this project:
 pip install virtualenv  
