@@ -33,6 +33,6 @@ https://flask.palletsprojects.com/en/3.0.x/deploying/waitress/
 https://docs.pylonsproject.org/projects/waitress/en/stable/index.html
 https://nagasudhir.blogspot.com/2022/10/waitress-as-flask-server-wsgi.html
 
-*note:
--if pip install (package) is not working, please use python -m pip install (package)
+*note:  
+-if pip install (package) is not working, please use python -m pip install (package)  
 -extract database file located at rtc/ directory (rtc_fc.rar)
