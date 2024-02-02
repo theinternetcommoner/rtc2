@@ -1,7 +1,7 @@
 # RTC Br. 1 FC System
 
 ## compatibility
-python 3.6 or higher
+python 3.6 or higher  
 link: https://www.python.org/downloads/
 
 ## packages used
@@ -10,8 +10,8 @@ Waitress
 *refer to requirements.txt for details
 
 ## commands used for this project:
-pip install virtualenv
-pip install flask
+pip install virtualenv  
+pip install flask  
 python -m pip install waitress
 
 ## for creating requirements.txt (includes everything)
@@ -25,12 +25,10 @@ pipreqs or pipreqs --force to override existing file
 pip install -r requirements.txt
 
 ## references for further reading
-flask link: 
-
+flask link:  
 https://flask.palletsprojects.com/en/3.0.x/
 
-waitress link:
-
+waitress link:  
 https://flask.palletsprojects.com/en/3.0.x/deploying/waitress/
 https://docs.pylonsproject.org/projects/waitress/en/stable/index.html
 https://nagasudhir.blogspot.com/2022/10/waitress-as-flask-server-wsgi.html
