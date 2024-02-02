@@ -25,10 +25,12 @@ pipreqs or pipreqs --force to override existing file
 pip install -r requirements.txt
 
 ## references for further reading
-flask link:
+flask link: 
+
 https://flask.palletsprojects.com/en/3.0.x/
 
 waitress link:
+
 https://flask.palletsprojects.com/en/3.0.x/deploying/waitress/
 https://docs.pylonsproject.org/projects/waitress/en/stable/index.html
 https://nagasudhir.blogspot.com/2022/10/waitress-as-flask-server-wsgi.html
