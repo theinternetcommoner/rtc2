@@ -1,4 +1,4 @@
-# RTC Br. 1 FC System
+# Court Inventory System
 
 ## compatibility
 python 3.6 or higher  
@@ -25,6 +25,13 @@ pipreqs or pipreqs --force to override existing file
 
 ## to install using requirements.txt
 pip install -r requirements.txt
+
+## accessing the system after installation
+User Panel:  
+http://localhost:5001/ or http://<server ip address>:5001/  
+
+Admin Panel:  
+http://localhost:5001/admin or http://<server ip address>:5001/admin 
 
 ## references for further reading
 flask link:  
