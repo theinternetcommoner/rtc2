@@ -28,10 +28,10 @@ pip install -r requirements.txt
 
 ## accessing the system after installation
 User Panel:  
-http://localhost:5001/ or http://<server ip address>:5001/  
+http://localhost:5001/ or http://server_ip_address:5001/  
 
 Admin Panel:  
-http://localhost:5001/admin or http://<server ip address>:5001/admin 
+http://localhost:5001/admin or http://server_ip_address:5001/admin 
 
 ## references for further reading
 flask link:  
