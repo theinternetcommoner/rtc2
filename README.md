@@ -5,9 +5,11 @@ python 3.6 or higher
 link: https://www.python.org/downloads/
 
 ## packages used
-Flask
-Waitress
-*refer to requirements.txt for details
+Flask  
+Waitress  
+
+*note:  
+refer to requirements.txt for details
 
 ## commands used for this project:
 pip install virtualenv  
