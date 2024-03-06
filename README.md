@@ -1,4 +1,4 @@
-# RTC Br. 1 FC System
+# Court Inventory System
 
 ## compatibility
 python 3.6 or higher  
@@ -9,7 +9,7 @@ Flask
 Waitress  
 
 *note:  
-refer to requirements.txt for details
+refer to requirements.txt for details, recommended to get the latest version if possible
 
 ## commands used for this project:
 pip install virtualenv  
@@ -26,15 +26,24 @@ pipreqs or pipreqs --force to override existing file
 ## to install using requirements.txt
 pip install -r requirements.txt
 
+## accessing the system after installation
+User Panel:  
+http://localhost:5001/ or http://server_ip_address:5001/  
+
+Admin Panel:  
+http://localhost:5001/admin or http://server_ip_address:5001/admin 
+
 ## references for further reading
 flask link:  
 https://flask.palletsprojects.com/en/3.0.x/
 
 waitress link:  
-https://flask.palletsprojects.com/en/3.0.x/deploying/waitress/
-https://docs.pylonsproject.org/projects/waitress/en/stable/index.html
+https://flask.palletsprojects.com/en/3.0.x/deploying/waitress/  
+https://docs.pylonsproject.org/projects/waitress/en/stable/index.html  
 https://nagasudhir.blogspot.com/2022/10/waitress-as-flask-server-wsgi.html
+
+## documentation and manual to follow
 
 *note:  
 -if pip install (package) is not working, please use python -m pip install (package)  
--extract database file located at rtc/ directory (rtc_fc.rar)
+-extract database file located at rtc/ directory (rtc_fc.rar)  
