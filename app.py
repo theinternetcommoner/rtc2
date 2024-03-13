@@ -21,10 +21,14 @@ if __name__ == '__main__':
 		# app.run(host = '0.0.0.0', port = 5001, debug = True)
 		app.run(port = 5001, debug = True)
 	else:
-		serve(app, host = '0.0.0.0')
+		# print('Service Started Successfully')
+		serve(app, host = '0.0.0.0', port = 5001)
+
+
 		# equivalent to 'from hello import app'
 		# waitress-serve --host 127.0.0.1 hello:app
 
 		# equivalent to 'from hello import create_app; create_app()'
 		# waitress-serve --host 127.0.0.1 --call hello:create_app
 		# waitress-serve --host 0.0.0.0 --port 5001 app:app
+		# call waitress-serve --listen 0.0.0.0:5001 app:app
