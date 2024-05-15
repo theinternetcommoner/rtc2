@@ -1,0 +1,53 @@
+{% extends "admintemplate.html" %}
+
+{% block title %}New Record{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<form class="form-horizontal" action="{{ url_for('admin.insertrecord') }}" method="post">
+			<h2 class="form-signin-heading">New Record</h2>
+			<input type="hidden" name="c_status" value="6">
+			<select name="c_category" class="form-control" placeholder="Case Category">
+				<option value ="">--Category--</option>
+				<option value ="1">Civil Case</option>
+				<option value ="2">Criminal Case</option>
+				<option value ="3">Children In Conflict with the Law (CICL)</option>
+			</select>
+			<select name="c_subcategory" class="form-control" placeholder="Case Category">
+				<option value ="">--Subcategory--</option>
+				<option value ="1">RA 9262 - Violence Against Women and Children</option>
+				<option value ="2">RA 9165 - Drugs (Involving Minors)</option>
+				<option value ="3">RAPE (With Minor Victim and/or Accused)</option>
+				<option value ="4">RA 7610 - Child Abuse</option>
+				<option value ="5">RA 9208 - Human Trafficking (Involving Minors)</option>
+				<option value ="6">Other Criminal Cases</option>
+				<option value ="7">Declaration of Nullity/Annulment of Marriage</option>
+				<option value ="8">Legal Separation</option>
+				<option value ="9">Adoption</option>
+				<option value ="10">Petition for Protection Order</option>
+				<option value ="11">Guardianship</option>
+				<option value ="12">Custody of Minor</option>
+				<option value ="13">Other Civil Cases</option>
+			</select>
+			<input type="text" name="c_number" class="form-control" placeholder="Case Number"/>
+			<input type="text" name="c_title" class="form-control" placeholder="Case Title"/>
+			<textarea class="form-control" rows="4" name="c_nature" placeholder="Case Nature"></textarea>
+			<input placeholder="Filing Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_filed" class="form-control" />
+			<input placeholder="Receiving Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_rcv" class="form-control"/>
+			<input placeholder="Warrant Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_woa" class="form-control"/>
+			<input placeholder="Detention Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_detain" class="form-control"/>
+			<input placeholder="Bail Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_bail" class="form-control"/>
+			<input placeholder="Archive Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_arch" class="form-control"/>
+			<input placeholder="Arraignment Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_arr" class="form-control"/>
+			<input placeholder="Pretial Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_pt" class="form-control"/>
+			<input placeholder="Prosecution's Evidence Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_proc" class="form-control"/>
+			<input placeholder="Defense's Evidence Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_def" class="form-control"/>
+			<input placeholder="Submission for Decision Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_submit" class="form-control"/>
+			<input placeholder="Disposal Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_disposed" class="form-control"/>
+			<input placeholder="Promulgation Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="c_prom" class="form-control"/>
+			<textarea class="form-control" rows="4" name="c_log" placeholder="Case Update"></textarea>
+			<br>
+			<input class="btn btn-success" type="submit" name="save" value="Add Record"/>
+		</form>
+	</div>
+{% endblock %}

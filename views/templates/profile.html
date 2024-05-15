@@ -1,0 +1,59 @@
+{% extends "viewstemplate.html" %}
+
+{% block title %}Case Profile{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<form class="form-horizontal">
+		{% for item in row %}
+		<input type="hidden" name="id" value="{{ item.case_id }}">
+		<h3 class="form-signin-heading">
+			<strong>
+				Case Number: {{ item.case_no }}
+			</strong>
+		</h3>
+		<hr>
+		<h4>			
+			Case Title: {{ item.case_title }}<br>
+			Nature: {{ item.case_nature }}<br>
+			Filing Date: {{ item.filing_date }}<br>
+			Receiving Date: {{ item.receiving_date }}<br>
+			Warrant Date: {{ item.warrant_date }}<br>
+			Detention Date: {{ item.detention_date }}<br>
+			Bail Date: {{ item.bail_date }}<br>
+			Archived Date: {{ item.archive_date }}<br>
+			Arraignment Date: {{ item.arraignment_date }}<br>
+			Pretrial Date: {{ item.pretrial_date }}<br>
+			Prosecution's Evidence Date: {{ item.prosecution_evidence_date }}<br>
+			Defense's Evidence Date: {{ item.defense_evidence_date }}<br>
+			Submitted for Decision Date: {{ item.submitted_for_decision_date }}<br>
+			Disposal Date: {{ item.disposal_date }}<br>
+			Promulgation Date: {{ item.promulgation_date }}<br>
+			Case Aging: {{ item.age }} year/s<br>
+			Current Status: <strong>{{ item.case_status }}</strong><br>
+			Other Case Details:<br>
+			{{ item.logs }}
+		</h4>
+		{% endfor %}
+	</form>
+	<hr>
+	<em>
+		<strong>Legend:</strong><br>
+		<label>1 - Archived</label>
+		<label>2 -Arraignment and Pretrial</label>
+		<label>3 - Decided</label>
+		<label>4 - Dismissed</label>
+		<label>5 - Mediation</label>
+		<label>6 - Newly Raffled</label>
+		<label>7 - Presentation of Defense's Evidence</label>
+		<label>8 - Presentation of Prosecution's Evidence</label>
+		<label>9 - Probation</label>
+		<label>10 - Provisionally Dismissed</label>			
+		<label>11 - Submitted for Decision</label>
+		<label>12 - Suspended Proceedings</label>
+		<label>13 - Suspended Judjment</label>
+	</em>
+</div>
+
+{% endblock %}
