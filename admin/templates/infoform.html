@@ -1,0 +1,24 @@
+{% extends "admintemplate.html" %}
+
+{% block title %}Edit Info{% endblock %}
+
+{% block content %}
+
+	<div class="container" style="width: 40%;">
+		{% for item in row %}		
+		<form class="form-horizontal" action="{{ url_for('admin.editinfo', id = item.case_id) }}" method="post">
+			<h2 class="form-signin-heading">Change Case Information</h2>
+			<label>Case Number</label>
+			<input type="text" name="c_number" class="form-control" value="{{item.case_no}}"/>
+			<label>Title</label>
+			<input type="text" name="c_title" class="form-control" value="{{item.case_title}}"/>
+			<label>Nature</label>
+			<textarea class="form-control" rows="4" name="c_nature">{{item.case_nature}}</textarea>
+			<label>Other Details</label>
+			<textarea class="form-control" rows="4" name="c_log">{{item.logs}}</textarea>
+			<input class="btn btn-warning" type="submit" name="update" value="Commit Changes"/>
+		</form>
+		{% endfor %}
+	</div>
+
+{% endblock %}

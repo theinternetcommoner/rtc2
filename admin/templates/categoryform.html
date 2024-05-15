@@ -1,0 +1,33 @@
+{% extends "admintemplate.html" %}
+
+{% block title %}Edit Category{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	{% for item in row %}
+	<form class="form-horizontal" action="{{ url_for('admin.editcategory', id = item.case_id) }}" method="post">
+		<h2 class="form-signin-heading">Case Number: {{ item.case_no }}</h2>
+		<h3>Case Title: {{ item.case_title }}</h3>
+		<h3>Nature: {{ item.case_nature }}</h3>
+		<h3>Current Case Category: {{ item.case_category }}</h3>
+		<select name="c_category" class="form-control" placeholder="Case Category">
+			<option value ="">--Category--</option>
+			<option value ="1">Civil Case</option>
+			<option value ="2">Criminal Case</option>
+			<option value ="3">Children In Conflict with the Law (CICL)</option>
+		</select>
+		<br>
+		<input class="btn btn-warning" type="submit" name="change_cat" value="Change Category"/>
+	</form>
+	{% endfor %}
+	<br>
+	<em>
+		<strong>Legend:</strong><br>
+		<label>1 - Civil Case</label><br>
+		<label>2 - Criminal Case</label><br>
+		<label>3 - Children in Conflict of the Law (CICL)</label>
+	</em>
+</div>
+
+{% endblock %}
