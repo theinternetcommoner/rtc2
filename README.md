@@ -5,8 +5,10 @@ python 3.6 or higher
 link: https://www.python.org/downloads/
 
 ## packages used
-Flask  
-Waitress  
+Flask==3.0.3
+flask_sqlalchemy==3.1.1
+SQLAlchemy==2.0.28
+waitress==3.0.0 
 
 *note:  
 refer to requirements.txt for details, recommended to get the latest version if possible
