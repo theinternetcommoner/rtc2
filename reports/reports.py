@@ -566,7 +566,7 @@ def report_9208():
 	result7 = db.session.execute(query7)
 	rows7 = result7.fetchall()
 
-	result = rows1 + rows2 + rows3 + rows4 + rows5 + rows6 + rows75
+	result = rows1 + rows2 + rows3 + rows4 + rows5 + rows6 + rows7
 	return render_template('report_9208.html', row = result)
 
 @reports.route('/report_othercriminal')
