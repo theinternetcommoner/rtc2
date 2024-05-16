@@ -84,3 +84,9 @@ def __init__(self, username, password):
     self.username = username
     self.password = password
     
+class tbl_file(db.Model):
+    file_id = db.Column(db.Integer, primary_key = True)
+    filename = db.Column(db.Text)
+
+def __init__(self, file_id, filename):
+    self.filename = filename
