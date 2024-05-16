@@ -115,8 +115,7 @@ def insertrecord():
 			case_category = request.form['c_category'],
 			case_subcategory = request.form['c_subcategory'],
 			disposal_type = '',
-			logs = request.form['c_log'],
-			filename = ''
+			logs = request.form['c_log']
 		)
 
 		db.session.add(record)

@@ -26,16 +26,6 @@ class tbl_case_record(db.Model):
     case_subcategory = db.Column(db.Text)
     disposal_type = db.Column(db.Text)
     logs = db.Column(db.Text)
-    filename = db.Column(db.Text)
-
-    # def serialize(self):
-    #     return {
-    #         'id': self.id,
-    #         'name': self.name
-    #     }
-
-    # def __repr__(self):
-    #     return f"<MyModel {self.name}>"
 
 def __init__(
         self,
@@ -84,7 +74,6 @@ def __init__(
     self.case_subcategory = case_subcategory
     self.disposal_type = disposal_type
     self.logs = logs
-    self.filename = filename
 
 class tbl_account(db.Model):
     id = db.Column(db.Integer, primary_key = True)
