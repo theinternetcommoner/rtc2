@@ -1,7 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from views.views import views
 from reports.reports import reports
 from admin.admin import admin
+from filestore.filestore import file_store
 from models.modelref import *
 from waitress import serve
 
@@ -15,11 +16,12 @@ db.init_app(app)
 app.register_blueprint(reports, url_prefix = "/reports")
 app.register_blueprint(views, url_prefix = "/views")
 app.register_blueprint(admin, url_prefix = "/admin")
+app.register_blueprint(file_store, url_prefix = "/filestore")
 
 @app.route('/')
 def index():
 	# remove 'user' from session
-	# session.pop('usr', None)
+	session.pop('usr', None)
 	return render_template('index.html')
 
 # for handling error 404
