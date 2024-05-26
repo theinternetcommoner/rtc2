@@ -98,6 +98,9 @@
 							<a class="dropdown-item" href="{{ url_for('reports.count_cicl') }}" target="_blank">CICL Cases</a>
 						</div>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('filestore.dir') }}">PDF Library</a>
+					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0" action="{{ url_for('views.searchrecord') }}" method="POST">
 					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">

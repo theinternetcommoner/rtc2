@@ -5,7 +5,9 @@
 {% block content %}
 
 <div class="container-fluid">
-	
+	{% for item in storage%}
+		<a href="{{ url_for('filestore.show_file', pdf_id = item.file_id) }}" target="_blank">{{ item.filename }}</a>
+	{% endfor %}
 </div>
 
 {% endblock %}
