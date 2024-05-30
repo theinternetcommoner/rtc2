@@ -34,7 +34,7 @@ def file_upload():
 	new_pdf = tbl_file(filename=pdf.filename)
 	db.session.add(new_pdf)
 	db.session.commit()
-	return redirect(url_for('filestore.dir'))
+	return redirect(url_for('filestore.upload_form'))
 
 # upload form
 @file_store.route('/uploadform')
