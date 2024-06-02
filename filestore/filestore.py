@@ -44,17 +44,6 @@ def upload_form():
 # file search function
 @file_store.route('/searchfile', methods = ['POST'])
 def searchfile():
-	searchval = '%'+request.form['search']+'%'
-	data = {
-		'filename': searchval
-	}
-
-	sql = """
-		SELECT * FROM tbl_file WHERE filename LIKE :filename
-	"""
-
-	query = text(sql)
-	result = db.session.execute(query, data)
-	rows = result.fetchall()
-
+	searchval = "%{}%".format(request.form['search'])
+	rows = tbl_file.query.filter(tbl_file.filename.like(searchval)).all()
 	return render_template('pdf_dir.html', storage = rows)
