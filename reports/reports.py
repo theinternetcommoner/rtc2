@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from models.modelref import *
 from .queries import *
 from sqlalchemy import text
@@ -954,6 +954,9 @@ def report_othercivil():
 	return render_template('report_othercivil.html', row = result)
 
 #displaying by ageing
+#######################################################
+#######################################################
+#######################################################
 @reports.route('/report_ageing_0year')
 def report_ageing_0year():
 	sql1 = case_age(2, 0)
@@ -1481,6 +1484,9 @@ def report_ageing_10years_up():
 	result = rows1 + rows2 + rows3 + rows4 + rows5 + rows6 + rows7
 
 	return render_template('report_ageing_10years_up.html', row = result)
+#######################################################
+#######################################################
+#######################################################
 
 #displaying by status
 @reports.route('/report_archived')
@@ -1612,6 +1618,113 @@ def report_susjudge():
 	result = res.fetchall()
 
 	return render_template('report_susjudge.html', row = result)
+################################
+# custom ageing routes/functions
+################################
+def custom_age(case_category, case_status, age): # for age 1-9 yrs
+    global sql
+    sql = """
+        SELECT 
+        *,
+        CASE
+            WHEN strftime('%%m', date('now')) > strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
+            WHEN strftime('%%m', date('now')) = strftime('%%m', date(filing_date)) THEN
+                CASE 
+                    WHEN strftime('%%d', date('now')) >= strftime('%%d', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
+                    ELSE strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
+                END
+            WHEN strftime('%%m', date('now')) < strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
+        END as age
+        FROM
+        tbl_case_record
+        WHERE
+        case_category = %d
+        AND
+        case_status = %d
+        AND
+        age = %d
+    """
+    return sql % (case_category, case_status, age)
+
+def custom_age10(case_category, case_status, age): # for age 1-9 yrs
+    global sql
+    sql = """
+        SELECT 
+        *,
+        CASE
+            WHEN strftime('%%m', date('now')) > strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
+            WHEN strftime('%%m', date('now')) = strftime('%%m', date(filing_date)) THEN
+                CASE 
+                    WHEN strftime('%%d', date('now')) >= strftime('%%d', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
+                    ELSE strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
+                END
+            WHEN strftime('%%m', date('now')) < strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
+        END as age
+        FROM
+        tbl_case_record
+        WHERE
+        case_category = %d
+        AND
+        case_status = %d
+        AND
+        age > %d
+    """
+    return sql % (case_category, case_status, age)
+
+@reports.route('/custom') # form
+def custom():
+	return render_template('custom.html')
+
+@reports.route('/custom_report', methods = ['POST']) # for age 1-9 yrs
+def custom_report():
+	category = int(request.form['c_category'])
+	age = int(request.form['c_age'])
+	
+	sql1 = custom_age(category, 2, age)
+	query1 = text(sql1)
+
+	result1 = db.session.execute(query1)
+	rows1 = result1.fetchall()
+
+	sql2 = custom_age(category, 5, age)
+	query2 = text(sql2)
+
+	result2 = db.session.execute(query2)
+	rows2 = result2.fetchall()
+
+	sql3 = custom_age(category, 6, age)
+	query3 = text(sql3)
+
+	result3 = db.session.execute(query3)
+	rows3 = result3.fetchall()
+
+	sql4 = custom_age(category, 7, age)
+	query4 = text(sql4)
+
+	result4 = db.session.execute(query4)
+	rows4 = result4.fetchall()
+
+	sql5 = custom_age(category, 8, age)
+	query5 = text(sql5)
+
+	result5 = db.session.execute(query5)
+	rows5 = result5.fetchall()
+
+	sql6 = custom_age(category, 11, age)
+	query6 = text(sql6)
+
+	result6 = db.session.execute(query6)
+	rows6 = result6.fetchall()
+
+	sql7 = custom_age(category, 12, age)
+	query7 = text(sql7)
+
+	result7 = db.session.execute(query7)
+	rows7 = result7.fetchall()
+
+	result = rows1 + rows2 + rows3 + rows4 + rows5 + rows6 + rows7
+
+	return render_template('customyear.html', row = result)
 
 #################################################################################
 #end of routes
