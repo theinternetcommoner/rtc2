@@ -1646,30 +1646,30 @@ def custom_age(case_category, case_status, age): # for age 1-9 yrs
     """
     return sql % (case_category, case_status, age)
 
-def custom_age10(case_category, case_status, age): # for age 1-9 yrs
-    global sql
-    sql = """
-        SELECT 
-        *,
-        CASE
-            WHEN strftime('%%m', date('now')) > strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
-            WHEN strftime('%%m', date('now')) = strftime('%%m', date(filing_date)) THEN
-                CASE 
-                    WHEN strftime('%%d', date('now')) >= strftime('%%d', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
-                    ELSE strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
-                END
-            WHEN strftime('%%m', date('now')) < strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
-        END as age
-        FROM
-        tbl_case_record
-        WHERE
-        case_category = %d
-        AND
-        case_status = %d
-        AND
-        age > %d
-    """
-    return sql % (case_category, case_status, age)
+# def custom_age10(case_category, case_status, age): # for age 10 yrs up
+#     global sql
+#     sql = """
+#         SELECT 
+#         *,
+#         CASE
+#             WHEN strftime('%%m', date('now')) > strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
+#             WHEN strftime('%%m', date('now')) = strftime('%%m', date(filing_date)) THEN
+#                 CASE 
+#                     WHEN strftime('%%d', date('now')) >= strftime('%%d', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date))
+#                     ELSE strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
+#                 END
+#             WHEN strftime('%%m', date('now')) < strftime('%%m', date(filing_date)) THEN strftime('%%Y', date('now')) - strftime('%%Y', date(filing_date)) - 1
+#         END as age
+#         FROM
+#         tbl_case_record
+#         WHERE
+#         case_category = %d
+#         AND
+#         case_status = %d
+#         AND
+#         age > %d
+#     """
+#     return sql % (case_category, case_status, age)
 
 @reports.route('/custom') # form
 def custom():
