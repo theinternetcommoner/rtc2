@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: Dockerfile
+    ports:
+      - 5001:5001
+    volume:
+      - C:\rtc2\instance:/rtc2/instance
+    restart: always
+    command: python app.py
+  volume:
+    - C:\rtc2\instance:/rtc2/instance
+
+# docker run -d --name rtc2-1 -v C:\rtc2\instance:/rtc2/instance -p 5001:5001 theinternetcommoner/rtc2:1.0

@@ -1,0 +1,14 @@
+venv
+__pycache__
+**/*.pyc
+**/*.pdf
+**/*.db
+**/*.lnk
+**/*.rar
+**/*.bat
+**/*.git
+**/*.yml
+**/*.md
+**/*.gitignore
+**/*.dockerignore
+Dockerfile

@@ -35,7 +35,7 @@ if __name__ == '__main__':
 	with app.app_context():
 		db.create_all()
 		
-	if dev_mode == True:
+	if dev_mode == False:
 		# app.run(host = '0.0.0.0', port = 5001, debug = True)
 		app.run(port = 5001, debug = True)
 	else:
