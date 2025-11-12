@@ -48,4 +48,7 @@ https://nagasudhir.blogspot.com/2022/10/waitress-as-flask-server-wsgi.html
 
 *note:  
 -if pip install (package) is not working, please use python -m pip install (package)  
--extract database file located at rtc/ directory (rtc_fc.rar)  
+-extract database file located at rtc/ directory (rtc_fc.rar)
+
+Please support my projects 
+[Buy me coffe](buymeacoffee.com/theinternetcommoner)
