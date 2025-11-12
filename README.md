@@ -51,4 +51,4 @@ https://nagasudhir.blogspot.com/2022/10/waitress-as-flask-server-wsgi.html
 -extract database file located at rtc/ directory (rtc_fc.rar)
 
 Please support my projects  
-[Buy me coffe](buymeacoffee.com/theinternetcommoner)
+[Buy me a coffe](buymeacoffee.com/theinternetcommoner)
